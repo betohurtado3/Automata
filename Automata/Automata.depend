@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1599681156 source:c:\users\betoh\desktop\automata\automata\main.cpp
+	<iostream>
+	<sstream>
+	<string.h>
+
