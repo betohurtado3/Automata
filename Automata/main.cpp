@@ -1,6 +1,8 @@
 #include <iostream>
 #include<sstream>
 #include <string.h>
+#include <cctype>
+#include <cstring>
 
 #define INICIO 0
 #define S1 1
@@ -24,7 +26,6 @@ int main()
     char *cadenaconver = strdup(numeroString.c_str());
     ///Conversion del valor introducido a un valor en CHAR
     cout<<"-------------------------------------"<<endl;
-
       for(int i=0;i<numeroString.length();i++) ///Recorrido de la cadena introducida
         {
             switch(estado)
@@ -33,7 +34,7 @@ int main()
                 {
                     if(cadenaconver[i+1]=='\0')
                             cout<<"Cadena No Permitida"<<endl;
-                    if(cadenaconver[i]=='1')///El primer estado Solo admite Digitos
+                    if (isdigit(cadenaconver[i]))///El primer estado Solo admite Digitos
                     {
                         estado = S1;
                         ///cout<<"Primer Estado: "<<cadenaconver[i]<<endl;
@@ -60,7 +61,7 @@ int main()
                         estado = S4;
                         ///cout<<"Segundo Estado: "<<cadenaconver[i]<<endl;
                     }
-                    else if(cadenaconver[i]=='1'){
+                    else if(isdigit(cadenaconver[i])){
                         estado = S1;
                         ///cout<<"Segundo Estado: "<<cadenaconver[i]<<endl;
                     }
@@ -74,7 +75,7 @@ int main()
                 case S2:
                 {
                     ///EL Tercero Solo Admite Digitos
-                    if(cadenaconver[i]=='1')
+                    if(isdigit(cadenaconver[i]))
                     {
 
                         estado = S3;
@@ -91,7 +92,7 @@ int main()
                 case S3:
                 {
                     ///EL Cuarto se repite cuando es un digito, y cuando es E va al siguiente
-                    if(cadenaconver[i]=='1')
+                    if(isdigit(cadenaconver[i]))
                     {
                         estado = S3;
                          if(cadenaconver[i+1]=='\0')
@@ -120,7 +121,7 @@ int main()
                         ///cout<<"Quinto Estado: "<<cadenaconver[i]<<endl;
 
                     }
-                    else if (cadenaconver[i]=='1')
+                    else if (isdigit(cadenaconver[i]))
                     {
                         estado = S6;
                          if(cadenaconver[i+1]=='\0')
@@ -136,7 +137,7 @@ int main()
                 case S5:
                 {
                     ///EL Quinto Admite '+' y '-' y cuando es un digito va al proximo
-                    if(cadenaconver[i]=='1')
+                    if(isdigit(cadenaconver[i]))
                     {
                         estado = S6;
                          if(cadenaconver[i+1]=='\0')
@@ -153,7 +154,7 @@ int main()
                 {
                     cout<<"Cadena Permitida"<<endl;
                     ///EL Quinto Admite '+' y '-' y cuando es un digito va al proximo
-                    if(cadenaconver[i]=='1')
+                    if(isdigit(cadenaconver[i]))
                     {
                         cout<<"Cadena Permitida"<<endl;
                         ///cout<<"Septimo Estado: "<<cadenaconver[i]<<endl;
